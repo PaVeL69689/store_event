@@ -1,0 +1,122 @@
+{
+  "info": {
+    "name": "Events API",
+    "description": "Postman collection for filtering paginated events by categories and dates.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://127.0.0.1:8000"
+    }
+  ],
+  "item": [
+    {
+      "name": "Get all events",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "{{base_url}}/api/events",
+          "host": ["{{base_url}}"],
+          "path": ["api", "events"]
+        }
+      }
+    },
+    {
+      "name": "Filter by one category",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "{{base_url}}/api/events?category_ids[]=1",
+          "host": ["{{base_url}}"],
+          "path": ["api", "events"],
+          "query": [
+            {
+              "key": "category_ids[]",
+              "value": "1"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Filter by multiple categories",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "{{base_url}}/api/events?category_ids[]=1&category_ids[]=2",
+          "host": ["{{base_url}}"],
+          "path": ["api", "events"],
+          "query": [
+            {
+              "key": "category_ids[]",
+              "value": "1"
+            },
+            {
+              "key": "category_ids[]",
+              "value": "2"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Filter by date range",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "{{base_url}}/api/events?date_from=2026-06-01&date_to=2026-07-31",
+          "host": ["{{base_url}}"],
+          "path": ["api", "events"],
+          "query": [
+            {
+              "key": "date_from",
+              "value": "2026-06-01"
+            },
+            {
+              "key": "date_to",
+              "value": "2026-07-31"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Filter by categories, dates and pagination",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "{{base_url}}/api/events?category_ids[]=2&category_ids[]=3&date_from=2026-06-01&date_to=2026-08-31&per_page=2&page=1",
+          "host": ["{{base_url}}"],
+          "path": ["api", "events"],
+          "query": [
+            {
+              "key": "category_ids[]",
+              "value": "2"
+            },
+            {
+              "key": "category_ids[]",
+              "value": "3"
+            },
+            {
+              "key": "date_from",
+              "value": "2026-06-01"
+            },
+            {
+              "key": "date_to",
+              "value": "2026-08-31"
+            },
+            {
+              "key": "per_page",
+              "value": "2"
+            },
+            {
+              "key": "page",
+              "value": "1"
+            }
+          ]
+        }
+      }
+    }
+  ]
+}
